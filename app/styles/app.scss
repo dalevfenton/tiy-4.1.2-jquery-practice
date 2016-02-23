@@ -207,6 +207,7 @@ $absolute-side: 4px;
   line-height: 50px;
   vertical-align: middle;
   color: rgba(168, 168, 167, 1);
+  cursor: pointer;
 }
 .other-month{
   color: rgba(86, 86, 86, 1);
@@ -225,4 +226,52 @@ $absolute-side: 4px;
   margin-top: 50px;
   border: 1px solid rgba(229, 229, 229, 1);
   padding: 4px 4px 8px 4px;
+  & > *{
+    border-radius: 5px;
+  }
+}
+#keyboard-display{
+  display: block;
+  width: 100%;
+  height: 200px;
+  box-shadow: none;
+  margin: 0 0 15px 0;
+  background: white;
+  border-radius: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+$default-key-width: 6.25%;
+.keyboard-key{
+  cursor: pointer;
+  background: white;
+  border-radius: 5px;
+  text-align: center;
+  display: inline-block;
+  height: 42px;
+  width: $default-key-width; //6%
+  margin-right: .7%;
+  margin-bottom: 5px;
+  line-height: 42px;
+  vertical-align: middle;
+  //total width template: 695px;
+  //single key 42px x 42px;
+}
+.row-last{
+  margin-right: 0;
+}
+.three-halfs{
+  width: $default-key-width * 1.5;
+}
+.seven-quarters{
+  width: $default-key-width * 1.81;
+}
+.double-wide{
+  width: $default-key-width * 2.38;
+}
+.full-width{
+  width: 100%;
+}
+.caps-on{
+  text-transform: uppercase;
 }
