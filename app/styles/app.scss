@@ -48,6 +48,8 @@ ul{
   font-weight: bold;
   background: rgba(68, 68, 69, 1);
   padding: 3px;
+  height: 365px;
+  background: black;
 }
 #datepicker{
   @include make-xs-column(12);
@@ -221,11 +223,10 @@ $absolute-side: 4px;
 //-------------------------------KEYBOARD STYLES--------------------------------
 #keyboard{
   @include make-xs-column( 12 );
-  height: 500px;
   background: rgba(238, 238, 238, 1);
   margin-top: 50px;
   border: 1px solid rgba(229, 229, 229, 1);
-  padding: 4px 4px 8px 4px;
+  padding: 4px 4px 4px 4px;
   & > *{
     border-radius: 5px;
   }
@@ -235,7 +236,7 @@ $absolute-side: 4px;
   width: 100%;
   height: 200px;
   box-shadow: none;
-  margin: 0 0 15px 0;
+  margin: 0 0 5px 0;
   background: white;
   border-radius: 5px;
   overflow-y: scroll;

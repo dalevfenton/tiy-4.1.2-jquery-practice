@@ -227,7 +227,6 @@ function handleKeyInput(keyID){
         break;
       case '40':
         //return key
-        //tab key
         $('#keyboard-display').append('</br>');
         break;
     }
@@ -237,6 +236,8 @@ $.each(keyboard, function(value){
   $('#keys').append('<div id="keyboard-' + value + '" class="keyboard-key">' + keyboard[value].keyDisplay + '</div>');
   var selector = '#keyboard-' + value;
   $(selector).click(function(){
+    event.stopPropagation();
+    event.preventDefault();
     handleKeyInput(event.target.id);
   });
   if(keyboard[value].extraClass !== undefined){
