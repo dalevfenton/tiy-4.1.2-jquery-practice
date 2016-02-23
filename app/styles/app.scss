@@ -1,0 +1,228 @@
+
+// Bootstrap Variables
+$icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+
+// Import Bootstrap
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+//--------------------------------MIXINS AND GLOBAL STYLES----------------------
+@mixin nav-number-bubble {
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  content: attr(value);
+  color: white;
+  background: rgba(0, 0, 0, .45);
+  padding: 3px 8px;
+  border-radius:  10px;
+}
+@mixin nav-item-bg-border {
+  background: rgba(228, 228, 228, 1);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+//-------------------------BOOTSTRAP GRID STYLES--------------------------------
+.container{
+
+}
+.practice, .datepicker-inside, .days-row, .dates-row{
+  @include make-row;
+}
+
+#accordion{
+  @include make-xs-column( 12 );
+  @include make-sm-column( 4 );
+  font-weight: bold;
+  background: rgba(68, 68, 69, 1);
+  padding: 3px;
+}
+#datepicker{
+  @include make-xs-column(12);
+  @include make-sm-column(8);
+  clear: both;
+  @media (min-width: $screen-sm-min) {
+    clear: none;
+  }
+}
+.date-header, #calendar{
+  @include make-xs-column(12);
+}
+.date{
+  $grid-columns: 7 !global;
+  @include make-xs-column( 1 );
+  $grid-columns: 12 !global;
+}
+
+
+//--------------------------ACCORDION NAV SYTLES--------------------------------
+.ui-accordion-header{
+  background: linear-gradient(rgba(107, 109, 114, 1), rgba(75, 77, 81, 1));
+  color: white;
+  position: relative;
+  font-size: 14px;
+  padding: 10px 0 10px 30px;
+  margin: 0;
+  &::before{
+    position: absolute;
+    top: 11px;
+    left: 10px;
+    content: '';
+    font-family: FontAwesome;
+  }
+  &::after{
+    @include nav-number-bubble;
+  }
+}
+
+.ui-state-active, .ui-accordion-header:hover{
+  background: linear-gradient(rgba(171, 207, 96, 1), rgba(115, 138, 49, 1)) !important;
+  color: rgba(67, 83, 24, 1) !important;
+}
+#icon-inbox::before{
+  content: '\f01c';
+}
+#icon-mail::before{
+  content: '\f0e0';
+}
+#icon-cloud::before{
+  content: '\f0ee';
+}
+#icon-plug{
+  &::before{
+    content: '\f1e6';
+  }
+  &::after{
+    content: none;
+  }
+}
+
+.ui-accordion-content{
+  @include nav-item-bg-border;
+  counter-reset: nav-counter;
+  span{
+    display: block;
+    position: relative;
+    padding: 10px 0 10px 30px;
+    color: rgba(121, 121, 121, 1);
+    counter-increment: nav-counter;
+    border-bottom: 1px solid rgba(201, 201, 201, 1);
+    &::before{
+      position: absolute;
+      content: "0" counter(nav-counter);
+      top: 10px;
+      left: 10px;
+      color: rgba(171, 166, 166, 1);
+    }
+    &::after{
+        @include nav-number-bubble;
+        @include nav-item-bg-border;
+        border: 1px solid rgba(201, 201, 201, 1);
+        color: rgba(121, 121, 121, 1);
+        border-radius: 10px;
+    }
+  }
+}
+
+//----------------------------DATEPICKER STYLES---------------------------------
+#datepicker{
+  text-align: center;
+  color: white;
+  background: black;
+  padding: 0 10% 25px 10%;
+}
+.date-header{
+  border-bottom: 1px solid rgba(214, 214, 214, 1);
+  & > *{
+    display: inline-block;
+    padding: 10px 0;
+  }
+}
+$absolute-top: 15px;
+$absolute-side: 4px;
+.prev-month{
+  position: relative;
+  float: left;
+  &::before{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 8.7px 5px 0;
+    border-color: transparent rgba(86, 86, 86, 1) transparent transparent;
+    position: absolute;
+    content: '';
+    top: $absolute-top;
+    left: $absolute-side;
+  }
+}
+.next-month{
+  position: relative;
+  float: right;
+  &::after{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 8.7px;
+    border-color: transparent transparent transparent rgba(86, 86, 86, 1);
+    position: absolute;
+    content: '';
+    top: $absolute-top;
+    right: $absolute-side;
+  }
+}
+.month-name{
+  position: relative;
+  text-transform: uppercase;
+  color: rgba(86, 86, 86, 1);
+  margin-right: 30px;
+  &::after{
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background: radial-gradient(rgba(171, 207, 96, 1), rgba(115, 138, 49, 1));
+    content: '';
+    top: 6px;
+    right: -20px;
+  }
+}
+.year-num{
+  font-size: 13px;
+  color: rgba(160, 167, 168, 1);
+}
+.date{
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+  color: rgba(168, 168, 167, 1);
+}
+.other-month{
+  color: rgba(86, 86, 86, 1);
+}
+.date-selected > span{
+  border: 1px solid rgba(115, 139, 29, 1);
+  color: rgba(115, 139, 29, 1);
+  padding: 12px;
+}
+
+//-------------------------------KEYBOARD STYLES--------------------------------
+#keyboard{
+  @include make-xs-column( 12 );
+  height: 500px;
+  background: rgba(238, 238, 238, 1);
+  margin-top: 50px;
+  border: 1px solid rgba(229, 229, 229, 1);
+  padding: 4px 4px 8px 4px;
+}
